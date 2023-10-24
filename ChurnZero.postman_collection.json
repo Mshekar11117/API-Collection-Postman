@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "fd0a6e47-e126-4fa7-bcde-4945a9c6fc15",
+		"name": "ChurnZero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19437504"
+	},
+	"item": [
+		{
+			"name": "GetChurnZeroDetails-DevJS-idprovider",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://idtest.nepris.com/account/GetChurnZeroDetails",
+					"protocol": "https",
+					"host": [
+						"idtest",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"account",
+						"GetChurnZeroDetails"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

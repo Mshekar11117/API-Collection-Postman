@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "8ef745f1-ceda-4c52-919f-74f1121a5458",
+		"name": "Postman API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19437504"
+	},
+	"item": [
+		{
+			"name": "Collection",
+			"item": [
+				{
+					"name": "All collections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.getpostman.com/collections",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Environments",
+			"item": [
+				{
+					"name": "All Environments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apikey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.getpostman.com/environments",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"environments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

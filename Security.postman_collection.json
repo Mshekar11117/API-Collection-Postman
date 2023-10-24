@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "3570c6af-9a26-4e9f-b21b-27a03d3b551d",
+		"name": "Security",
+		"description": "This collection is related to Application security ApI's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19437504"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-length": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ReturnUrl\": \"/app/dashboard\",\r\n\"AppName\": \"v5-qa4\",\r\n\"SubDomain\": \"qa4\",\r\n\"redirect\": \"/app/dashboard\",\r\n\"redirect\": \"v5-qa4\",\r\n\"UserName\": \"mshekar@nepris.com\",\r\n\"Password\": \"password2022\",\r\n\"__RequestVerificationToken\":\"CfDJ8KskMJAfCNVArEYmsRDZ2lrPIyS6TH_kEAzFz415da43epZCWqIz6P-TVmXYTwCJ355njMq1DDl0WIOEjmvUU9vR1fFXMOl-ol_2QelI12sVc_QRF-vjhu3CfsB4VLJJtUzyD6dd3--MUdb1KXnHdk8\",\r\n\"RememberMe\": \"false\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://idtest.nepris.com/Account/Login",
+					"protocol": "https",
+					"host": [
+						"idtest",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"Account",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VerifyEducatorClass-CanAccessWith_InActiveToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// let Response = pm.response.json();\r",
+							"// console.log(Response)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzc2p3dCIsInN1YiI6Nzc0NTgsImlhdCI6MTY1NDE3MTU2MCwiZXhwIjoxNjU0MTcxNTkwLCJlbWFpbCI6ImRzcGF0aGFzQHR0c2QuazEyLm9yLnVzIiwiZ2l2ZW5fbmFtZSI6IkRlYmJpZSIsImZhbWlseV9uYW1lIjoiU3BhdGhhcyIsIm5hbWUiOiJEZWJiaWUgU3BhdGhhcyIsInByZWZlcnJlZF91c2VybmFtZSI6ImRzcGF0aGFzIn0.Ri1T2iMiAvz2hhp",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"gridOptions\": {\r\n        \"page\": 1,\r\n        \"pageSize\": 999\r\n    },\r\n    \"userAuthId\": 77458\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qa4.nepris.com/app/json/reply/GetEducatorClassRequest",
+					"protocol": "https",
+					"host": [
+						"qa4",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"app",
+						"json",
+						"reply",
+						"GetEducatorClassRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VerifyEducatorClass-CanAccessWith_ActiveToken",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIzOTU0OSwiaWF0IjoxNjU0MTgyNTMzLCJleHAiOjE2NTQxODYxMzMsImVtYWlsIjoibXNoZWthckBuZXByaXMuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hbmp1bmF0aCAiLCJmYW1pbHlfbmFtZSI6IlNoZWthciAiLCJuYW1lIjoiTWFuanVuYXRoIFNoZWthciIsInByZWZlcnJlZF91c2VybmFtZSI6IjEwMjcyNTc0NDIyNDU2ODQ1NzQxNSIsInJvbGVzIjpbIkFkbWluIl19.FLlYrD20ZApAYaTCTnAWZAry9uLFii2n86O3Rv8C9F8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gridOptions\":{\"page\":1,\"pageSize\":999},\"userAuthId\":239549}"
+				},
+				"url": {
+					"raw": "https://qa4.nepris.com/app/json/reply/GetEducatorClassRequest",
+					"protocol": "https",
+					"host": [
+						"qa4",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"app",
+						"json",
+						"reply",
+						"GetEducatorClassRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserPublicProfileRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2ODExOSwiaWF0IjoxNjU0NTA4MjUzLCJleHAiOjE2NTQ1MTE4NTMsImVtYWlsIjoibWFydGluX2NocmlzQHNpbHZlcmZhbGxzLmsxMi5vci51cyIsImdpdmVuX25hbWUiOiJDaHJpcyIsImZhbWlseV9uYW1lIjoiTWFydGluIiwibmFtZSI6IkNocmlzIE1hcnRpbiIsInByZWZlcnJlZF91c2VybmFtZSI6Ik1hcnRpbkNocmlzIn0.RWQyjhO9jgvrfoRBd3Bke8DsglSlKWa07xKJazVzfz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userAuthId\": 168119,\r\n    \"loggedInUserAuthId\": 168119\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qa4.nepris.com/app/json/reply/GetUserPublicProfileRequest",
+					"protocol": "https",
+					"host": [
+						"qa4",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"app",
+						"json",
+						"reply",
+						"GetUserPublicProfileRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPartnerOrCompanyUserRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE2ODExOSwiaWF0IjoxNjU0NTA4MjUzLCJleHAiOjE2NTQ1MTE4NTMsImVtYWlsIjoibWFydGluX2NocmlzQHNpbHZlcmZhbGxzLmsxMi5vci51cyIsImdpdmVuX25hbWUiOiJDaHJpcyIsImZhbWlseV9uYW1lIjoiTWFydGluIiwibmFtZSI6IkNocmlzIE1hcnRpbiIsInByZWZlcnJlZF91c2VybmFtZSI6Ik1hcnRpbkNocmlzIn0.RWQyjhO9jgvrfoRBd3Bke8DsglSlKWa07xKJazVzfz0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"entityType\": \"org\",\r\n    \"entityId\": \"29660\",\r\n    \"gridOptions\": {\r\n        \"page\": 1,\r\n        \"pageSize\": 50,\r\n        \"filters\": [],\r\n        \"sortBy\": \"displayName\",\r\n        \"sortByDirection\": \"asc\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qa4.nepris.com/app/json/reply/GetPartnerOrCompanyUserRequest",
+					"protocol": "https",
+					"host": [
+						"qa4",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"app",
+						"json",
+						"reply",
+						"GetPartnerOrCompanyUserRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchUsersRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjY0MzUyLCJpYXQiOjE2NTQ1MDg3MjAsImV4cCI6MTY1NDUxMjMyMCwiZW1haWwiOiJiam92YW5pZTIwMDBAeWFob28uY29tIiwiZ2l2ZW5fbmFtZSI6ImpvdmFuaWUiLCJmYW1pbHlfbmFtZSI6ImJhdXRpc3RhIiwibmFtZSI6ImpvdmFuaWUgYmF1dGlzdGEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJqb3ZhbmllOTk5In0.A8JbVrnB63c11jYZSuttzCDVLdFEKqYfdcvB4JKUqzQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"keyword\": \"\",\r\n    \"limit\": 50,\r\n    \"offset\": 0,\r\n    \"filters\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qa4.nepris.com/app/json/reply/SearchUsersRequest",
+					"protocol": "https",
+					"host": [
+						"qa4",
+						"nepris",
+						"com"
+					],
+					"path": [
+						"app",
+						"json",
+						"reply",
+						"SearchUsersRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://nepris.com/app/json/reply/GetPartnerOrCompanyUserRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjY0NjQ4LCJpYXQiOjE2NjAxMjU5MTQsImV4cCI6MTY2MDEyOTUxNCwiZW1haWwiOiJjcndpbGNveDAxQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJDcmFpZyIsImZhbWlseV9uYW1lIjoiV2lsY294IiwibmFtZSI6IkNyYWlnIFdpbGNveCIsInByZWZlcnJlZF91c2VybmFtZSI6ImNyd2lsY294MDEifQ.jAEWaLIIIwo7018n1C7PTHpmxmrgYTpuMnv42ifb4_8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"entityType\": \"org\",\r\n    \"entityId\": \"29660\",\r\n    \"gridOptions\": {\r\n        \"page\": 1,\r\n        \"pageSize\": 50,\r\n        \"filters\": [],\r\n        \"sortBy\": \"displayName\",\r\n        \"sortByDirection\": \"asc\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nepris.com/app/json/reply/GetPartnerOrCompanyUserRequest",
+					"protocol": "https",
+					"host": [
+						"nepris",
+						"com"
+					],
+					"path": [
+						"app",
+						"json",
+						"reply",
+						"GetPartnerOrCompanyUserRequest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
